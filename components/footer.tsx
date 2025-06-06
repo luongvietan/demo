@@ -63,7 +63,7 @@ export default function Footer() {
               href="/"
               className="text-2xl font-bold bg-gradient-to-r from-emerald-500 to-cyan-400 bg-clip-text text-transparent"
             >
-              WebDevPro
+              Webgenios
             </Link>
             <p className="mt-4 text-neutral-400 max-w-md">
               Providing premium web development solutions for modern businesses.
@@ -73,10 +73,10 @@ export default function Footer() {
               <div className="flex items-center">
                 <Mail size={16} className="mr-2 text-emerald-500" />
                 <a
-                  href="mailto:contact@webdevpro.com"
+                  href="mailto:contact@webgenios.com"
                   className="hover:text-emerald-400 transition-colors"
                 >
-                  contact@webdevpro.com
+                  contact@webgenios.com
                 </a>
               </div>
               <div className="flex items-center">
@@ -118,7 +118,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="mt-16 pt-8 border-t border-neutral-800 flex flex-col md:flex-row justify-between items-center">
           <p className="text-neutral-500 text-sm">
-            © {currentYear} WebDevPro. All rights reserved.
+            © {currentYear} Webgenios. All rights reserved.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             {socialLinks.map((link, index) => (

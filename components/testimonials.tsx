@@ -27,7 +27,7 @@ export default function Testimonials() {
   const testimonials = [
     {
       quote:
-        "The team at WebDevPro delivered a stunning website for our business. Their attention to detail and focus on user experience has helped us increase our online conversions by 40%.",
+        "The team at Webgenios delivered a stunning website for our business. Their attention to detail and focus on user experience has helped us increase our online conversions by 40%.",
       name: "Sarah Johnson",
       title: "CEO, TechSolutions Inc.",
       image:
@@ -35,7 +35,7 @@ export default function Testimonials() {
     },
     {
       quote:
-        "From concept to execution, WebDevPro exceeded our expectations. Their team was responsive, creative, and technically excellent. Our e-commerce site now loads 3x faster and sales have increased significantly.",
+        "From concept to execution, Webgenios exceeded our expectations. Their team was responsive, creative, and technically excellent. Our e-commerce site now loads 3x faster and sales have increased significantly.",
       name: "Michael Chen",
       title: "Founder, StyleShop",
       image:
@@ -43,7 +43,7 @@ export default function Testimonials() {
     },
     {
       quote:
-        "Working with WebDevPro was a game-changer for our startup. They built a SaaS platform that was not only beautiful but also highly functional. Their expertise in web application development is unmatched.",
+        "Working with Webgenios was a game-changer for our startup. They built a SaaS platform that was not only beautiful but also highly functional. Their expertise in web application development is unmatched.",
       name: "Emily Rodriguez",
       title: "CTO, DataFlow Systems",
       image:
@@ -51,7 +51,7 @@ export default function Testimonials() {
     },
     {
       quote:
-        "I was impressed by WebDevPro's ability to translate our brand identity into a digital experience. The website they created for us perfectly captures our company's essence and has received countless compliments.",
+        "I was impressed by Webgenios's ability to translate our brand identity into a digital experience. The website they created for us perfectly captures our company's essence and has received countless compliments.",
       name: "David Wilson",
       title: "Marketing Director, Innovate Co.",
       image:
@@ -59,7 +59,7 @@ export default function Testimonials() {
     },
     {
       quote:
-        "The SEO optimization WebDevPro implemented on our website has dramatically improved our search rankings. We're now on the first page for all our key terms, and organic traffic has doubled.",
+        "The SEO optimization Webgenios implemented on our website has dramatically improved our search rankings. We're now on the first page for all our key terms, and organic traffic has doubled.",
       name: "Lisa Patel",
       title: "Owner, Wellness Hub",
       image:
@@ -72,7 +72,7 @@ export default function Testimonials() {
     {
       name: "Adobe",
       lightSrc:
-        "https://img.icons8.com/?size=100&id=118571&format=png&color=000000",
+        "https://img.icons8.com/?size=100&id=118571&format=png&color=FF0000",
       darkSrc:
         "https://img.icons8.com/?size=100&id=118571&format=png&color=FF0000",
       alt: "Adobe logo",

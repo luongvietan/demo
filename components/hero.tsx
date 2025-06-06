@@ -103,7 +103,7 @@ export default function Hero() {
                 <div className="w-3 h-3 rounded-full bg-green-500" />
               </div>
               <div className="flex-1 bg-white dark:bg-neutral-900 rounded-md h-6 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400">
-                webdevpro.com
+                webgenios.com
               </div>
             </div>
             <div className="w-full aspect-[16/9] relative bg-white dark:bg-neutral-900">

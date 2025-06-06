@@ -104,10 +104,10 @@ export default function Contact() {
                       Email Us
                     </p>
                     <a
-                      href="mailto:contact@webdevpro.com"
+                      href="mailto:contact@webgenios.com"
                       className="text-neutral-600 dark:text-neutral-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors"
                     >
-                      contact@webdevpro.com
+                      contact@webgenios.com
                     </a>
                   </div>
                 </div>

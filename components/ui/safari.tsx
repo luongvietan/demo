@@ -11,7 +11,7 @@ interface SafariProps {
 }
 
 export function Safari({
-  url = "webdevpro.com",
+  url = "webgenios.com",
   children,
   className,
   tabClassName,

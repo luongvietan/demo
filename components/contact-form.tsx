@@ -225,7 +225,7 @@ export default function ContactForm() {
               </div>
               <h3 className="text-lg font-semibold mb-1">Email Us</h3>
               <p className="text-neutral-600 dark:text-neutral-400">
-                info@webdevpro.com
+                info@webgenios.com
               </p>
             </div>
 
