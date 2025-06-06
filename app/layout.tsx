@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -33,12 +34,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-b from-neutral-50 to-neutral-100 dark:from-neutral-950 dark:to-neutral-900 min-h-screen overflow-x-hidden`}
       >
-        <ScrollProgress />
-        <div className="max-w-[100vw] overflow-x-hidden">{children}</div>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ScrollProgress />
+          <div className="max-w-[100vw] overflow-x-hidden">{children}</div>
+        </ThemeProvider>
       </body>
     </html>
   );

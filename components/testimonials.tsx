@@ -4,8 +4,18 @@ import { motion } from "framer-motion";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import Image from "next/image";
 import { ShineBorder } from "@/components/ui/shine-border";
+import { useTheme } from "next-themes";
+import { useState, useEffect } from "react";
 
 export default function Testimonials() {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Đảm bảo component chỉ render ở client side
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const testimonials = [
     {
       quote:
@@ -53,12 +63,18 @@ export default function Testimonials() {
   const companyLogos = [
     {
       name: "Adobe",
-      src: "https://img.icons8.com/?size=100&id=118571&format=png&color=000000",
+      lightSrc:
+        "https://img.icons8.com/?size=100&id=118571&format=png&color=000000",
+      darkSrc:
+        "https://img.icons8.com/?size=100&id=118571&format=png&color=FF0000",
       alt: "Adobe logo",
     },
     {
       name: "Apple",
-      src: "https://img.icons8.com/?size=100&id=30840&format=png&color=000000",
+      lightSrc:
+        "https://img.icons8.com/?size=100&id=30840&format=png&color=000000",
+      darkSrc:
+        "https://img.icons8.com/?size=100&id=30840&format=png&color=FFFFFF",
       alt: "Apple logo",
     },
     {
@@ -77,6 +93,17 @@ export default function Testimonials() {
       alt: "IBM logo",
     },
   ];
+
+  // Hàm lấy URL hình ảnh dựa vào theme
+  const getLogoSrc = (logo) => {
+    if (!mounted) return logo.src || logo.lightSrc;
+
+    if (logo.name === "Adobe" || logo.name === "Apple") {
+      return theme === "dark" ? logo.darkSrc : logo.lightSrc;
+    }
+
+    return logo.src;
+  };
 
   return (
     <section
@@ -138,7 +165,7 @@ export default function Testimonials() {
                 viewport={{ once: true }}
               >
                 <Image
-                  src={logo.src}
+                  src={getLogoSrc(logo)}
                   alt={logo.alt}
                   width={48}
                   height={48}
