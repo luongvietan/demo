@@ -1,37 +1,41 @@
 "use client";
 
-import { useRef, ReactNode } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, ReactNode } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 interface TextRevealProps {
   children: ReactNode;
   className?: string;
-  threshold?: number;
   delay?: number;
+  duration?: number;
 }
 
 export function TextReveal({
   children,
   className = "",
-  threshold = 0.5,
-  delay = 0,
+  delay = 0.2,
+  duration = 0.6,
 }: TextRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const controls = useAnimation();
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, threshold, 1], [0, 1, 1]);
-
-  const y = useTransform(scrollYProgress, [0, threshold, 1], [20, 0, 0]);
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [isInView, controls]);
 
   return (
     <motion.div
       ref={ref}
-      style={{ opacity, y }}
-      transition={{ delay }}
+      initial="hidden"
+      animate={controls}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 },
+      }}
+      transition={{ duration: 0.4, delay }}
       className={className}
     >
       {children}

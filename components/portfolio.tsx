@@ -29,7 +29,7 @@ export default function Portfolio() {
         "A modern corporate website with animated sections and integrated blog for a technology company.",
       image:
         "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
-      url: "/techcorp",
+      url: "techcorp",
       technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "Sanity CMS"],
     },
     {
@@ -40,7 +40,7 @@ export default function Portfolio() {
         "High-converting landing page for a food delivery service with online ordering capabilities.",
       image:
         "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
-      url: "foodfast.example.com",
+      url: "foodfast",
       technologies: ["React", "GSAP", "Firebase", "Stripe"],
     },
     {
@@ -51,7 +51,7 @@ export default function Portfolio() {
         "A complete e-commerce solution for a fashion brand with inventory management and payment processing.",
       image:
         "https://images.unsplash.com/photo-1519415943484-9fa1873496d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
-      url: "fashionista.example.com",
+      url: "estore",
       technologies: ["Next.js", "Shopify", "Tailwind CSS", "Vercel"],
     },
     {
