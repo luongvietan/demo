@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { HTMLAttributes, ReactNode } from "react";
-import { motion } from "framer-motion";
+import { motion, HTMLMotionProps } from "framer-motion";
 
 export interface BentoGridProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -23,7 +23,7 @@ export function BentoGrid({ className, children, ...props }: BentoGridProps) {
   );
 }
 
-interface BentoGridItemProps extends HTMLAttributes<HTMLDivElement> {
+interface BentoGridItemProps {
   className?: string;
   title: string;
   description: string;
@@ -42,7 +42,7 @@ export function BentoGridItem({
   col,
   row,
   ...props
-}: BentoGridItemProps) {
+}: BentoGridItemProps & HTMLMotionProps<"div">) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

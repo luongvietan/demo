@@ -15,7 +15,8 @@ export interface ShineBorderProps extends React.HTMLAttributes<HTMLDivElement> {
   borderRadius?: string;
   backgroundImage?: string;
   isActive?: boolean;
-  shimmerColor?: string;
+  shimmerColor?: string | string[];
+  shineColor?: string | string[];
 }
 
 export const ShineBorder = React.forwardRef<HTMLDivElement, ShineBorderProps>(
@@ -33,6 +34,7 @@ export const ShineBorder = React.forwardRef<HTMLDivElement, ShineBorderProps>(
       backgroundImage = "radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%)",
       isActive = true,
       shimmerColor = "rgba(255, 255, 255, 0.2)",
+      shineColor = "rgba(255, 255, 255, 0.2)",
       ...props
     },
     ref
@@ -66,6 +68,17 @@ export const ShineBorder = React.forwardRef<HTMLDivElement, ShineBorderProps>(
       }
     }, [position]);
 
+    // Xử lý shimmerColor khi là mảng
+    const getShimmerGradient = () => {
+      if (Array.isArray(shimmerColor) && shimmerColor.length >= 2) {
+        return `linear-gradient(90deg, ${shimmerColor[0]}, transparent 20%, transparent 80%, ${shimmerColor[1]})`;
+      }
+      if (Array.isArray(shineColor) && shineColor.length >= 2) {
+        return `linear-gradient(90deg, ${shineColor[0]}, transparent 20%, transparent 80%, ${shineColor[1]})`;
+      }
+      return `linear-gradient(90deg, var(--shimmer-color), transparent 20%, transparent 80%, var(--shimmer-color))`;
+    };
+
     return (
       <div
         ref={containerRef}
@@ -80,7 +93,9 @@ export const ShineBorder = React.forwardRef<HTMLDivElement, ShineBorderProps>(
             "--delay": `${delay}s`,
             "--border-width": `${borderWidth}px`,
             "--size": `${size}px`,
-            "--shimmer-color": shimmerColor,
+            "--shimmer-color": Array.isArray(shimmerColor)
+              ? shimmerColor[0]
+              : shimmerColor,
           } as React.CSSProperties
         }
       >
@@ -107,8 +122,7 @@ export const ShineBorder = React.forwardRef<HTMLDivElement, ShineBorderProps>(
           )}
           style={{
             borderRadius: `calc(${borderRadius} - var(--border-width))`,
-            background:
-              "linear-gradient(90deg, var(--shimmer-color), transparent 20%, transparent 80%, var(--shimmer-color))",
+            background: getShimmerGradient(),
             backgroundSize: "200% 100%",
             animation: isActive
               ? `shine var(--duration) linear infinite var(--delay)`

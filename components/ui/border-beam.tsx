@@ -13,6 +13,8 @@ export interface BorderBeamProps
   children?: React.ReactNode;
   as?: React.ElementType;
   borderWidth?: number;
+  colorFrom?: string;
+  colorTo?: string;
 }
 
 export const BorderBeam = React.forwardRef<HTMLButtonElement, BorderBeamProps>(
@@ -26,6 +28,8 @@ export const BorderBeam = React.forwardRef<HTMLButtonElement, BorderBeamProps>(
       size = 100,
       as: Component = "button",
       borderWidth = 1,
+      colorFrom = "theme(colors.emerald.500)",
+      colorTo = "transparent",
       ...props
     },
     ref
@@ -65,6 +69,8 @@ export const BorderBeam = React.forwardRef<HTMLButtonElement, BorderBeamProps>(
             "--delay": `${delay}s`,
             "--size": `${size}px`,
             "--border-width": `${borderWidth}px`,
+            "--color-from": colorFrom,
+            "--color-to": colorTo,
           } as React.CSSProperties
         }
       >
@@ -75,12 +81,13 @@ export const BorderBeam = React.forwardRef<HTMLButtonElement, BorderBeamProps>(
         >
           <div
             className={cn(
-              "absolute top-[calc(var(--y)-var(--size)/2)] left-[calc(var(--x)-var(--size)/2)] h-[--size] w-[--size] opacity-0 group-hover/beam:opacity-100 bg-[radial-gradient(var(--size)_circle_at_center,theme(colors.emerald.500),transparent_50%)] blur-sm transition-opacity duration-500 ease-in-out"
+              "absolute top-[calc(var(--y)-var(--size)/2)] left-[calc(var(--x)-var(--size)/2)] h-[--size] w-[--size] opacity-0 group-hover/beam:opacity-100 transition-opacity duration-500 ease-in-out blur-sm"
             )}
             style={
               {
                 "--x": "0px",
                 "--y": "0px",
+                background: `radial-gradient(var(--size) circle at center, var(--color-from, theme(colors.emerald.500)), var(--color-to, transparent) 50%)`,
               } as React.CSSProperties
             }
           />

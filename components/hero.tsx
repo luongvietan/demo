@@ -88,7 +88,9 @@ export default function Hero() {
                 borderWidth={1}
                 duration={10}
                 shineColor={["#9E7AFF", "#FE8BBB"]}
-              />
+              >
+                <div></div>
+              </ShineBorder>
             </motion.a>
           </div>
 

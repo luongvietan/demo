@@ -7,6 +7,14 @@ import { ShineBorder } from "@/components/ui/shine-border";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 
+interface CompanyLogo {
+  name: string;
+  src?: string;
+  lightSrc?: string;
+  darkSrc?: string;
+  alt: string;
+}
+
 export default function Testimonials() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -95,14 +103,14 @@ export default function Testimonials() {
   ];
 
   // Hàm lấy URL hình ảnh dựa vào theme
-  const getLogoSrc = (logo) => {
-    if (!mounted) return logo.src || logo.lightSrc;
+  const getLogoSrc = (logo: CompanyLogo): string => {
+    if (!mounted) return logo.src || logo.lightSrc || "";
 
     if (logo.name === "Adobe" || logo.name === "Apple") {
-      return theme === "dark" ? logo.darkSrc : logo.lightSrc;
+      return theme === "dark" ? logo.darkSrc || "" : logo.lightSrc || "";
     }
 
-    return logo.src;
+    return logo.src || "";
   };
 
   return (

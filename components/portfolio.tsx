@@ -7,6 +7,16 @@ import { Safari } from "@/components/ui/safari";
 import { TabsTrigger, TabsList, TabsContent, Tabs } from "@/components/ui/tabs";
 import { ShineBorder } from "@/components/ui/shine-border";
 
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  image: string;
+  url: string;
+  technologies: string[];
+}
+
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("all");
 
@@ -159,7 +169,7 @@ export default function Portfolio() {
   );
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project }: { project: Project }) {
   return (
     <motion.div whileHover={{ y: -5 }} className="group h-full">
       <ShineBorder
@@ -181,7 +191,7 @@ function ProjectCard({ project }) {
                 <h3 className="text-lg font-bold mb-1">{project.title}</h3>
                 <p className="text-sm opacity-90 mb-2">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, index) => (
+                  {project.technologies.map((tech: string, index: number) => (
                     <span
                       key={index}
                       className="px-2 py-1 text-xs rounded-full bg-emerald-500/80 text-white"
