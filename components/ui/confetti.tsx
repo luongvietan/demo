@@ -5,6 +5,9 @@ import confetti from "canvas-confetti";
 
 export interface ConfettiProps {
   className?: string;
+  options?: {
+    disableForReducedMotion?: boolean;
+  };
 }
 
 export interface ConfettiRef {
@@ -34,6 +37,13 @@ export interface CustomConfettiOptions extends confetti.Options {
 
 export const Confetti = forwardRef<ConfettiRef, ConfettiProps>((props, ref) => {
   const fire = (options?: confetti.Options) => {
+    if (
+      props.options?.disableForReducedMotion &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
     const defaultOptions = {
       particleCount: 100,
       spread: 70,
@@ -46,6 +56,13 @@ export const Confetti = forwardRef<ConfettiRef, ConfettiProps>((props, ref) => {
   };
 
   const fireCustom = (options?: CustomConfettiOptions) => {
+    if (
+      props.options?.disableForReducedMotion &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
     const defaultOptions: CustomConfettiOptions = {
       particleCount: 50,
       spread: 100,
