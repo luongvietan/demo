@@ -1,93 +1,179 @@
 "use client";
 
-import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { motion } from "framer-motion";
-import { Zap, Layout, Search, Smartphone, Shield, Code } from "lucide-react";
+import { Code, Globe, Lightbulb, Rocket, Shield, Zap } from "lucide-react";
+import { AnimatedBeam } from "@/components/ui/animated-beam";
+import { useRef } from "react";
 
 export default function Features() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const centerRef = useRef<HTMLDivElement>(null);
+  const feature1Ref = useRef<HTMLDivElement>(null);
+  const feature2Ref = useRef<HTMLDivElement>(null);
+  const feature3Ref = useRef<HTMLDivElement>(null);
+  const feature4Ref = useRef<HTMLDivElement>(null);
+  const feature5Ref = useRef<HTMLDivElement>(null);
+  const feature6Ref = useRef<HTMLDivElement>(null);
+
   const features = [
     {
-      title: "Lightning Fast",
+      icon: <Rocket className="h-10 w-10 text-emerald-500" />,
+      title: "Fast Performance",
       description:
-        "Optimized code and server-side rendering ensure your website loads in milliseconds, not seconds.",
-      icon: <Zap className="w-6 h-6 text-emerald-500" />,
+        "Optimized code and efficient infrastructure for lightning-fast load times and smooth user experiences.",
+      ref: feature1Ref,
     },
     {
-      title: "Modern UI Design",
+      icon: <Shield className="h-10 w-10 text-emerald-500" />,
+      title: "Security First",
       description:
-        "Clean, intuitive interfaces that engage visitors and guide them through your content effortlessly.",
-      icon: <Layout className="w-6 h-6 text-emerald-500" />,
+        "Built-in protection against common vulnerabilities with regular security updates and audits.",
+      ref: feature2Ref,
     },
     {
+      icon: <Globe className="h-10 w-10 text-emerald-500" />,
       title: "SEO Optimized",
       description:
-        "Built with search engines in mind, helping your business rank higher and attract more visitors.",
-      icon: <Search className="w-6 h-6 text-emerald-500" />,
+        "Search engine friendly code and structure to help your website rank higher in search results.",
+      ref: feature3Ref,
     },
     {
-      title: "Fully Responsive",
+      icon: <Zap className="h-10 w-10 text-emerald-500" />,
+      title: "Modern Technology",
       description:
-        "Perfect viewing experience across all devices - from desktops to smartphones and tablets.",
-      icon: <Smartphone className="w-6 h-6 text-emerald-500" />,
+        "Built with the latest technologies and frameworks to ensure your website stays current and performant.",
+      ref: feature4Ref,
     },
     {
-      title: "Enhanced Security",
-      description:
-        "Implemented with the latest security practices to protect your data and your customers.",
-      icon: <Shield className="w-6 h-6 text-emerald-500" />,
-    },
-    {
+      icon: <Code className="h-10 w-10 text-emerald-500" />,
       title: "Clean Code",
       description:
-        "Well-structured, maintainable code that makes future updates and expansions seamless.",
-      icon: <Code className="w-6 h-6 text-emerald-500" />,
+        "Well-structured, documented code that's easy to maintain and extend as your business grows.",
+      ref: feature5Ref,
+    },
+    {
+      icon: <Lightbulb className="h-10 w-10 text-emerald-500" />,
+      title: "Innovative Solutions",
+      description:
+        "Creative approaches to solve complex problems and deliver unique user experiences.",
+      ref: feature6Ref,
     },
   ];
 
+  const fadeInUpVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.5,
+      },
+    }),
+  };
+
   return (
-    <section id="features" className="py-20 bg-neutral-50 dark:bg-neutral-900">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center px-3 py-1 mb-4 text-sm font-medium rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300">
-            Why Choose Us
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-neutral-900 dark:text-white">
-            Our Competitive Edge
-          </h2>
-          <p className="max-w-2xl mx-auto text-neutral-600 dark:text-neutral-400">
-            We combine technical expertise with creative design to deliver
-            websites that not only look beautiful but perform exceptionally
-            well.
-          </p>
-        </motion.div>
-
-        <BentoGrid className="mb-12">
-          {features.map((feature, index) => (
-            <BentoGridItem
-              key={index}
-              title={feature.title}
-              description={feature.description}
-              icon={feature.icon}
-              className="p-6"
-            />
-          ))}
-        </BentoGrid>
-
-        <div className="text-center mt-12">
-          <motion.a
-            href="#services"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center px-6 py-3 rounded-md bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium hover:shadow-lg transition-shadow"
+    <section
+      id="features"
+      className="py-16 md:py-24 bg-white dark:bg-neutral-900 relative"
+    >
+      <div className="container mx-auto px-4" ref={containerRef}>
+        <div className="text-center mb-12 md:mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl md:text-4xl font-bold mb-4"
           >
-            Explore Our Services
-          </motion.a>
+            Why Choose Our Services
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto"
+          >
+            We deliver high-quality web solutions with a focus on performance,
+            security, and user experience.
+          </motion.p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
+          <div
+            ref={centerRef}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 pointer-events-none"
+          />
+
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              ref={feature.ref}
+              custom={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={fadeInUpVariants}
+              className="bg-neutral-50 dark:bg-neutral-800 p-6 rounded-lg border border-neutral-200 dark:border-neutral-700 hover:shadow-md transition-shadow"
+            >
+              <div className="mb-4">{feature.icon}</div>
+              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p className="text-neutral-600 dark:text-neutral-400">
+                {feature.description}
+              </p>
+            </motion.div>
+          ))}
+
+          {/* Animated beams connecting features */}
+          <AnimatedBeam
+            containerRef={containerRef}
+            fromRef={centerRef}
+            toRef={feature1Ref}
+            gradientStartColor="#9E7AFF"
+            gradientStopColor="#FE8BBB"
+            delay={0.5}
+          />
+          <AnimatedBeam
+            containerRef={containerRef}
+            fromRef={centerRef}
+            toRef={feature2Ref}
+            gradientStartColor="#9E7AFF"
+            gradientStopColor="#FE8BBB"
+            delay={0.7}
+          />
+          <AnimatedBeam
+            containerRef={containerRef}
+            fromRef={centerRef}
+            toRef={feature3Ref}
+            gradientStartColor="#9E7AFF"
+            gradientStopColor="#FE8BBB"
+            delay={0.9}
+          />
+          <AnimatedBeam
+            containerRef={containerRef}
+            fromRef={centerRef}
+            toRef={feature4Ref}
+            gradientStartColor="#9E7AFF"
+            gradientStopColor="#FE8BBB"
+            delay={1.1}
+          />
+          <AnimatedBeam
+            containerRef={containerRef}
+            fromRef={centerRef}
+            toRef={feature5Ref}
+            gradientStartColor="#9E7AFF"
+            gradientStopColor="#FE8BBB"
+            delay={1.3}
+          />
+          <AnimatedBeam
+            containerRef={containerRef}
+            fromRef={centerRef}
+            toRef={feature6Ref}
+            gradientStartColor="#9E7AFF"
+            gradientStopColor="#FE8BBB"
+            delay={1.5}
+          />
         </div>
       </div>
     </section>

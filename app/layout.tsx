@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     "SaaS development",
     "landing page design",
   ],
+  viewport: "width=device-width, initial-scale=1.0, maximum-scale=1.0",
 };
 
 export default function RootLayout({
@@ -34,10 +35,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-b from-neutral-50 to-neutral-100 dark:from-neutral-950 dark:to-neutral-900 min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-b from-neutral-50 to-neutral-100 dark:from-neutral-950 dark:to-neutral-900 min-h-screen overflow-x-hidden`}
       >
         <ScrollProgress />
-        {children}
+        <div className="max-w-[100vw] overflow-x-hidden">{children}</div>
       </body>
     </html>
   );

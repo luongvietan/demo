@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { MagicCard } from "@/components/ui/magic-card";
 import { Building2, Rocket, ShoppingBag, Database } from "lucide-react";
+import { AnimatedBeam } from "@/components/ui/animated-beam";
 
 export default function Services() {
   const services = [
@@ -33,7 +34,7 @@ export default function Services() {
     {
       title: "E-commerce Solutions",
       description:
-        "Custom online stores with seamless checkout experiences. We build secure, scalable e-commerce websites that drive sales.",
+        "Custom online stores with seamless checkout experiences. We build secure, scalable e-commerce websites that drive conversions and grow your sales.",
       icon: <ShoppingBag className="w-10 h-10 text-emerald-500 mb-4" />,
       features: [
         "Secure payments",
@@ -73,7 +74,7 @@ export default function Services() {
 
   return (
     <section id="services" className="py-20">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -95,48 +96,55 @@ export default function Services() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
         >
           {services.map((service, index) => (
-            <motion.div key={index} variants={item}>
-              <MagicCard className="h-full">
-                <div className="flex flex-col items-start">
-                  {service.icon}
-                  <h3 className="text-xl font-bold mb-2 text-neutral-900 dark:text-white">
-                    {service.title}
-                  </h3>
-                  <p className="text-neutral-600 dark:text-neutral-400 mb-4">
-                    {service.description}
-                  </p>
-                  <ul className="grid grid-cols-2 gap-2 w-full">
-                    {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-4 w-4 text-emerald-500 mr-2"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M5 13l4 4L19 7"
-                          />
-                        </svg>
-                        <span className="text-sm text-neutral-700 dark:text-neutral-300">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </MagicCard>
+            <motion.div key={index} variants={item} className="h-full">
+              <AnimatedBeam
+                beamColor="#10b981"
+                beamOpacity={0.2}
+                size={200}
+                containerClassName="h-full"
+              >
+                <MagicCard className="h-full">
+                  <div className="flex flex-col items-start p-6 h-full">
+                    {service.icon}
+                    <h3 className="text-xl font-bold mb-2 text-neutral-900 dark:text-white">
+                      {service.title}
+                    </h3>
+                    <p className="text-neutral-600 dark:text-neutral-400 mb-4">
+                      {service.description}
+                    </p>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full mt-auto">
+                      {service.features.map((feature, i) => (
+                        <li key={i} className="flex items-center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 text-emerald-500 mr-2 flex-shrink-0"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 13l4 4L19 7"
+                            />
+                          </svg>
+                          <span className="text-sm text-neutral-700 dark:text-neutral-300">
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </MagicCard>
+              </AnimatedBeam>
             </motion.div>
           ))}
         </motion.div>

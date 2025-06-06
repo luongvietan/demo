@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 import Image from "next/image";
+import { ShineBorder } from "@/components/ui/shine-border";
 
 export default function Testimonials() {
   const testimonials = [
@@ -82,7 +83,7 @@ export default function Testimonials() {
       id="testimonials"
       className="py-20 bg-neutral-50 dark:bg-neutral-900"
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -102,23 +103,39 @@ export default function Testimonials() {
           </p>
         </motion.div>
 
-        <div className="-mx-4 sm:-mx-8 md:-mx-12 lg:-mx-16">
-          <InfiniteMovingCards
-            items={testimonials}
-            direction="right"
-            speed="slow"
-          />
-        </div>
+        <ShineBorder
+          containerClassName="w-full overflow-hidden rounded-lg"
+          borderWidth={1}
+          shimmerColor="rgba(16, 185, 129, 0.2)"
+        >
+          <div className="-mx-4 sm:-mx-8 md:-mx-12 lg:-mx-16 py-4">
+            <InfiniteMovingCards
+              items={testimonials}
+              direction="right"
+              speed="slow"
+            />
+          </div>
+        </ShineBorder>
 
         <div className="mt-16 text-center">
           <p className="text-lg font-medium text-neutral-700 dark:text-neutral-300 mb-8">
             Trusted by businesses of all sizes
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6">
+          <motion.div
+            className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, staggerChildren: 0.1 }}
+            viewport={{ once: true }}
+          >
             {companyLogos.map((logo, i) => (
-              <div
+              <motion.div
                 key={i}
                 className="h-12 w-auto flex items-center justify-center"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: i * 0.1 }}
+                viewport={{ once: true }}
               >
                 <Image
                   src={logo.src}
@@ -127,9 +144,9 @@ export default function Testimonials() {
                   height={48}
                   className="object-contain"
                 />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
