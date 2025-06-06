@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 
 export const InfiniteMovingCards = ({
   items,
@@ -89,11 +90,13 @@ export const InfiniteMovingCards = ({
               </p>
               <div className="flex items-center gap-3">
                 {item.image && (
-                  <div className="h-10 w-10 rounded-full overflow-hidden">
-                    <img
+                  <div className="h-10 w-10 rounded-full overflow-hidden relative">
+                    <Image
                       src={item.image}
                       alt={item.name}
-                      className="h-full w-full object-cover"
+                      fill
+                      sizes="40px"
+                      className="object-cover"
                     />
                   </div>
                 )}

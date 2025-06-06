@@ -74,8 +74,8 @@ export default function ContactForm() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-neutral-600 dark:text-neutral-400"
             >
-              Have a project in mind? Let's talk about how we can help bring
-              your vision to life.
+              Have a project in mind? Let&apos;s talk about how we can help
+              bring your vision to life.
             </motion.p>
           </div>
 
@@ -93,8 +93,8 @@ export default function ContactForm() {
                 </div>
                 <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
                 <p className="text-neutral-600 dark:text-neutral-400 mb-8">
-                  Thank you for reaching out. We'll get back to you as soon as
-                  possible.
+                  Thank you for reaching out. We&apos;ll get back to you as soon
+                  as possible.
                 </p>
                 <button
                   onClick={resetForm}
