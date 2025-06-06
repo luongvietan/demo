@@ -53,7 +53,7 @@ export default function TechCorpAbout() {
         "Launched dedicated AI solutions division to meet growing market demands.",
     },
     {
-      year: "2023",
+      year: "2025",
       title: "Industry Recognition",
       description:
         "Named as a leader in Gartner's Magic Quadrant for Enterprise Solutions.",

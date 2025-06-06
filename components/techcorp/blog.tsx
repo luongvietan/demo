@@ -33,7 +33,7 @@ export default function TechCorpBlog() {
       title: "The Future of Enterprise AI: Trends to Watch in 2025",
       excerpt:
         "Explore the emerging AI technologies that are reshaping how enterprises operate and deliver value to customers.",
-      date: "May 15, 2024",
+      date: "May 15, 2025",
       readTime: "8 min read",
       category: "AI Trends",
       image:
@@ -44,7 +44,7 @@ export default function TechCorpBlog() {
       title: "Building Resilient Cloud Infrastructure for Global Operations",
       excerpt:
         "Learn best practices for designing cloud architectures that ensure business continuity across international markets.",
-      date: "April 22, 2024",
+      date: "April 22, 2025",
       readTime: "6 min read",
       category: "DevOps",
       image:
@@ -55,7 +55,7 @@ export default function TechCorpBlog() {
       title: "Cybersecurity in the Age of Remote Work",
       excerpt:
         "Discover strategies to protect your enterprise data and systems in distributed work environments.",
-      date: "March 10, 2024",
+      date: "March 10, 2025",
       readTime: "5 min read",
       category: "Security",
       image:
@@ -66,7 +66,7 @@ export default function TechCorpBlog() {
       title: "The ROI of Digital Transformation: Measuring Success",
       excerpt:
         "How to quantify the business impact of your digital initiatives and ensure continued stakeholder support.",
-      date: "February 28, 2024",
+      date: "February 28, 2025",
       readTime: "7 min read",
       category: "Digital Strategy",
       image:

@@ -28,7 +28,7 @@ export function ScrollProgress({
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = scrollYProgress.onChange((latest) => {
+    const unsubscribe = scrollYProgress.on("change", (latest) => {
       setIsVisible(latest > 0.01);
     });
     return () => unsubscribe();

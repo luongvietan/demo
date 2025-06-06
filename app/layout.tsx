@@ -50,7 +50,9 @@ export default function RootLayout({
             position="top"
             zIndex={50}
           />
-          <div className="max-w-[100vw] overflow-x-hidden">{children}</div>
+          <div className="max-w-[100vw] overflow-x-hidden relative">
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>

@@ -93,8 +93,8 @@ export function AnimatedCircularProgressBar({
           fill="none"
           stroke={color}
           strokeWidth={strokeWidth}
-          strokeDasharray={circumference}
-          strokeDashoffset={strokeDashoffset}
+          strokeDasharray={circumference.toString()}
+          strokeDashoffset={strokeDashoffset.toString()}
           strokeLinecap="round"
           style={{
             transition: "stroke-dashoffset 0.1s ease",
