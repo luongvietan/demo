@@ -3,8 +3,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
-export interface BorderBeamProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface BorderBeamProps {
   className?: string;
   containerClassName?: string;
   duration?: number;
@@ -17,7 +16,7 @@ export interface BorderBeamProps
   colorTo?: string;
 }
 
-export const BorderBeam = React.forwardRef<HTMLButtonElement, BorderBeamProps>(
+export const BorderBeam = React.forwardRef<HTMLDivElement, BorderBeamProps>(
   (
     {
       className,
@@ -26,7 +25,7 @@ export const BorderBeam = React.forwardRef<HTMLButtonElement, BorderBeamProps>(
       duration = 2.5,
       delay = 0,
       size = 100,
-      as: Component = "button",
+      as: Component = "div",
       borderWidth = 1,
       colorFrom = "theme(colors.emerald.500)",
       colorTo = "transparent",

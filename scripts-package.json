@@ -1,0 +1,9 @@
+{
+  "name": "icon-downloader",
+  "version": "1.0.0",
+  "description": "Downloads tech stack SVG icons",
+  "type": "module",
+  "scripts": {
+    "download": "node download-icons.js"
+  }
+}

@@ -29,7 +29,7 @@ export default function Portfolio() {
         "A modern corporate website with animated sections and integrated blog for a technology company.",
       image:
         "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80",
-      url: "techcorp.example.com",
+      url: "/techcorp",
       technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "Sanity CMS"],
     },
     {
@@ -180,33 +180,37 @@ function ProjectCard({ project }: { project: Project }) {
         borderWidth={1}
         shimmerColor="rgba(16, 185, 129, 0.2)"
       >
-        <Safari url={project.url} className="shadow-lg h-full">
-          <div className="relative h-64 w-full">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
-              <div className="p-4 text-white">
-                <h3 className="text-lg font-bold mb-1">{project.title}</h3>
-                <p className="text-sm opacity-90 mb-2">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech: string, index: number) => (
-                    <span
-                      key={index}
-                      className="px-2 py-1 text-xs rounded-full bg-emerald-500/80 text-white"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+        <a href={project.url} className="block h-full">
+          <Safari url={project.url} className="shadow-lg h-full">
+            <div className="relative h-64 w-full">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
+                <div className="p-4 text-white">
+                  <h3 className="text-lg font-bold mb-1">{project.title}</h3>
+                  <p className="text-sm opacity-90 mb-2">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech: string, index: number) => (
+                      <span
+                        key={index}
+                        className="px-2 py-1 text-xs rounded-full bg-emerald-500/80 text-white"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </Safari>
+          </Safari>
+        </a>
       </ShineBorder>
     </motion.div>
   );
