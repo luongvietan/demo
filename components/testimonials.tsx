@@ -116,7 +116,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="py-20 bg-neutral-50 dark:bg-neutral-900"
+      className="py-12 md:py-16 bg-neutral-50 dark:bg-neutral-900"
     >
       <div className="container mx-auto px-4 max-w-7xl">
         <motion.div
@@ -124,7 +124,7 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <div className="inline-flex items-center px-3 py-1 mb-4 text-sm font-medium rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300">
             Client Testimonials

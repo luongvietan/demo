@@ -52,7 +52,7 @@ export default function ContactForm() {
   return (
     <section
       id="contact"
-      className="py-16 md:py-24 bg-neutral-50 dark:bg-neutral-900 relative"
+      className="py-12 md:py-16 bg-neutral-50 dark:bg-neutral-900 relative"
     >
       <Confetti ref={confettiRef} options={{ disableForReducedMotion: true }} />
       <div className="container mx-auto px-4">
@@ -225,7 +225,7 @@ export default function ContactForm() {
               </div>
               <h3 className="text-lg font-semibold mb-1">Email Us</h3>
               <p className="text-neutral-600 dark:text-neutral-400">
-                info@webgenios.com
+                contact@webgenios.com
               </p>
             </div>
 
@@ -248,7 +248,7 @@ export default function ContactForm() {
               </div>
               <h3 className="text-lg font-semibold mb-1">Call Us</h3>
               <p className="text-neutral-600 dark:text-neutral-400">
-                +1 (555) 123-4567
+                +84 384 398 634
               </p>
             </div>
 
@@ -277,7 +277,7 @@ export default function ContactForm() {
               </div>
               <h3 className="text-lg font-semibold mb-1">Visit Us</h3>
               <p className="text-neutral-600 dark:text-neutral-400">
-                123 Web Street, Digital City
+                Ho Chi Minh City, Vietnam
               </p>
             </div>
           </div>

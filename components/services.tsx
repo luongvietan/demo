@@ -73,14 +73,14 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="py-20">
+    <section id="services" className="py-12 md:py-16">
       <div className="container mx-auto px-4 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <div className="inline-flex items-center px-3 py-1 mb-4 text-sm font-medium rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300">
             Our Services
@@ -149,7 +149,7 @@ export default function Services() {
           ))}
         </motion.div>
 
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.05 }}
@@ -158,7 +158,7 @@ export default function Services() {
           >
             Get Started
           </motion.a>
-        </div>
+        </div>*/}
       </div>
     </section>
   );

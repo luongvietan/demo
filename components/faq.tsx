@@ -53,14 +53,17 @@ export default function FAQ() {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-neutral-50 dark:bg-neutral-900">
+    <section
+      id="faq"
+      className="py-12 md:py-16 bg-neutral-50 dark:bg-neutral-900"
+    >
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <div className="inline-flex items-center px-3 py-1 mb-4 text-sm font-medium rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300">
             FAQ
@@ -98,7 +101,7 @@ export default function FAQ() {
             ))}
           </Accordion>
         </div>
-
+        {/* 
         <div className="mt-16 text-center">
           <p className="mb-6 text-neutral-700 dark:text-neutral-300">
             Still have questions? We&apos;re here to help.
@@ -111,7 +114,7 @@ export default function FAQ() {
           >
             Contact Us
           </motion.a>
-        </div>
+        </div> */}
       </div>
     </section>
   );

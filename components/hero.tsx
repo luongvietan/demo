@@ -1,12 +1,15 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
+// import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { TypingAnimation } from "@/components/ui/typing-animation";
 import { ArrowRight } from "lucide-react";
 import { BorderBeam } from "@/components/ui/border-beam";
 import { ShineBorder } from "@/components/ui/shine-border";
+import { RetroGrid } from "@/components/ui/retro-grid";
+import { TextAnimate } from "@/components/ui/text-animate";
+import { AuroraText } from "@/components/ui/aurora-text";
+import { WordRotate } from "@/components/ui/word-rotate";
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -29,47 +32,77 @@ export default function Hero() {
   return (
     <div
       ref={ref}
-      className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden"
+      className="relative pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-radial from-emerald-500/10 to-transparent" />
-
-      {/* Animated circles */}
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-500/30 rounded-full blur-3xl opacity-30" />
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-cyan-500/30 rounded-full blur-3xl opacity-30" />
+      {/* Enhanced background with RetroGrid */}
+      <RetroGrid
+        opacity={0.3}
+        angle={60}
+        lightLineColor="#10b981"
+        darkLineColor="#10b981"
+      />
 
       <motion.div
         style={{ y, opacity }}
         className="container mx-auto px-4 relative z-10"
       >
-        <div className="flex flex-col items-center text-center">
-          <div className="inline-flex items-center px-3 py-1 mb-6 md:mb-8 text-sm font-medium rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">
+        <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
+          {/* <div className="inline-flex items-center px-3 py-1 mb-6 md:mb-8 text-sm font-medium rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">
             <span className="flex h-2 w-2 mr-2 rounded-full bg-emerald-500" />
             Premium Web Development Solutions
-          </div>
+          </div> */}
 
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-neutral-950 to-neutral-800 dark:from-white dark:to-neutral-300">
-            Premium Web Solutions for <br />
-            <span className="text-emerald-500">Modern</span> Businesses
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 tracking-tight">
+            <TextAnimate
+              animation="blurInUp"
+              by="word"
+              className="text-neutral-900 dark:text-white"
+            >
+              Premium Web Solutions for
+            </TextAnimate>
           </h1>
 
-          <div className="text-lg md:text-xl font-medium mb-6 md:mb-8 text-neutral-700 dark:text-neutral-300 h-8">
+          <div className="mb-4 md:mb-6">
+            <AuroraText
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-emerald-500"
+              colors={["#10b981", "#06b6d4", "#0ea5e9", "#10b981"]}
+            >
+              Modern Businesses
+            </AuroraText>
+          </div>
+
+          {/* <div className="mb-6 md:mb-8">
+            <TextAnimate
+              animation="blurInUp"
+              by="word"
+              className="text-3xl md:text-5xl lg:text-6xl font-bold text-neutral-900 dark:text-white"
+            ></TextAnimate>
+          </div> */}
+
+          <div className="text-lg md:text-xl font-medium mb-8 md:mb-10 text-neutral-700 dark:text-neutral-300 h-10">
             We create beautiful{" "}
-            <TypingAnimation
+            <WordRotate
               words={words}
               className="text-emerald-500 font-semibold"
+              duration={2000}
+              motionProps={{
+                initial: { opacity: 0, y: 20 },
+                animate: { opacity: 1, y: 0 },
+                exit: { opacity: 0, y: -20 },
+                transition: { duration: 0.3, ease: "easeInOut" },
+              }}
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 mb-10 md:mb-16">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mb-10 md:mb-14">
             <motion.a
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative px-8 py-4 rounded-md bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-medium flex items-center justify-center hover:shadow-lg transition-shadow overflow-hidden"
+              className="relative px-6 sm:px-8 py-3 sm:py-4 rounded-md bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-medium flex items-center justify-center hover:shadow-lg transition-shadow overflow-hidden"
             >
               Request a Quote
-              <ArrowRight size={18} className="ml-2" />
+              <ArrowRight size={16} className="ml-2" />
               <BorderBeam
                 duration={3}
                 size={100}
@@ -81,7 +114,7 @@ export default function Hero() {
               href="#portfolio"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative px-8 py-4 rounded-md border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors overflow-hidden"
+              className="relative px-6 sm:px-8 py-3 sm:py-4 rounded-md border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors overflow-hidden"
             >
               View Our Work
               <ShineBorder
@@ -95,14 +128,14 @@ export default function Hero() {
           </div>
 
           {/* Browser mockup with website preview */}
-          <div className="relative w-full max-w-4xl mx-auto mt-8 shadow-2xl rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800">
-            <div className="bg-neutral-100 dark:bg-neutral-800 p-3 flex items-center space-x-2 border-b border-neutral-200 dark:border-neutral-700">
+          {/* <div className="relative w-full max-w-4xl mx-auto shadow-2xl rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800">
+            <div className="bg-neutral-100 dark:bg-neutral-800 p-2 sm:p-3 flex items-center space-x-2 border-b border-neutral-200 dark:border-neutral-700">
               <div className="flex space-x-1">
-                <div className="w-3 h-3 rounded-full bg-red-500" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                <div className="w-3 h-3 rounded-full bg-green-500" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500" />
+                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500" />
               </div>
-              <div className="flex-1 bg-white dark:bg-neutral-900 rounded-md h-6 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400">
+              <div className="flex-1 bg-white dark:bg-neutral-900 rounded-md h-5 sm:h-6 flex items-center justify-center text-xs text-neutral-500 dark:text-neutral-400">
                 webgenios.com
               </div>
             </div>
@@ -116,7 +149,7 @@ export default function Hero() {
                 priority
               />
             </div>
-          </div>
+          </div> */}
         </div>
       </motion.div>
     </div>

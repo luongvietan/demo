@@ -1,24 +1,23 @@
 "use client";
 
-import { useScroll, motion, useSpring } from "framer-motion";
-import React, { useRef } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { useEffect, useState } from "react";
 
-export const ScrollProgress = ({
-  color = "from-emerald-500 to-cyan-400",
-  height = 1,
-  positionClass = "fixed top-0 left-0 right-0 z-50",
-  containerClass = "",
-  barClass = "",
-  position = "top",
-}: {
+interface ScrollProgressProps {
   color?: string;
   height?: number;
-  positionClass?: string;
-  containerClass?: string;
-  barClass?: string;
   position?: "top" | "bottom";
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
+  easing?: number;
+  zIndex?: number;
+}
+
+export function ScrollProgress({
+  color = "#10b981",
+  height = 4,
+  position = "top",
+  easing = 0.5,
+  zIndex = 50,
+}: ScrollProgressProps) {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -26,17 +25,31 @@ export const ScrollProgress = ({
     restDelta: 0.001,
   });
 
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.onChange((latest) => {
+      setIsVisible(latest > 0.01);
+    });
+    return () => unsubscribe();
+  }, [scrollYProgress]);
+
   return (
-    <div
-      ref={ref}
-      className={`${positionClass} ${
-        position === "bottom" ? "bottom-0" : "top-0"
-      } ${containerClass}`}
-    >
-      <motion.div
-        className={`h-[${height}px] bg-gradient-to-r ${color} origin-left ${barClass}`}
-        style={{ scaleX }}
-      />
-    </div>
+    <motion.div
+      className="fixed left-0 right-0 origin-left"
+      style={{
+        top: position === "top" ? 0 : "auto",
+        bottom: position === "bottom" ? 0 : "auto",
+        height,
+        backgroundColor: color,
+        scaleX,
+        opacity: isVisible ? 1 : 0,
+        zIndex,
+        transformOrigin: "left",
+      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isVisible ? 1 : 0 }}
+      transition={{ duration: 0.3 }}
+    />
   );
-};
+}

@@ -124,7 +124,7 @@ export default function Contact() {
                       href="tel:+1234567890"
                       className="text-neutral-600 dark:text-neutral-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors"
                     >
-                      +1 (234) 567-890
+                      +84 384 398 634
                     </a>
                   </div>
                 </div>
@@ -138,7 +138,7 @@ export default function Contact() {
                       Visit Us
                     </p>
                     <p className="text-neutral-600 dark:text-neutral-400">
-                      123 Web Street, Digital City
+                      Nha Be, Ho Chi Minh City, Vietnam
                       <br />
                       United States, 10101
                     </p>
@@ -155,7 +155,7 @@ export default function Contact() {
                     (social) => (
                       <a
                         key={social}
-                        href={`https://${social}.com`}
+                        href={`https://${social}.com/`}
                         className="w-10 h-10 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-neutral-600 dark:text-neutral-400 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 hover:text-emerald-600 dark:hover:text-emerald-300 transition-colors"
                         target="_blank"
                         rel="noopener noreferrer"

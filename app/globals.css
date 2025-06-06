@@ -148,6 +148,29 @@
   }
 }
 
+@keyframes grid {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(var(--cell-size) * -1));
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0;
+  }
+}
+
 @layer utilities {
   .animate-scroll {
     animation: scroll linear infinite;
@@ -157,6 +180,12 @@
   }
   .animate-accordion-up {
     animation: accordion-up 0.2s ease-out;
+  }
+  .animate-grid {
+    animation: grid 5s linear infinite;
+  }
+  .animate-ripple {
+    animation: ripple 3s ease-out infinite;
   }
 }
 
@@ -190,4 +219,61 @@ body {
 
 .animate-blink {
   animation: blink 1s step-start infinite;
+}
+
+/* Animation for aurora text effect */
+@keyframes aurora {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-aurora {
+  animation: aurora linear infinite;
+}
+
+/* Animation for line shadow */
+@keyframes line-shadow {
+  0%,
+  100% {
+    background-position: -100% 0;
+  }
+  50% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-line-shadow {
+  animation: line-shadow 4s infinite linear;
+}
+
+/* Animation for shiny text */
+@keyframes shiny-text {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shiny-text {
+  animation: shiny-text 3s infinite linear;
+}
+
+/* Animation for gradient text */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 8s linear infinite;
 }
