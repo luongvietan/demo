@@ -59,7 +59,7 @@ export default function Testimonials() {
     },
     {
       quote:
-        "The SEO optimization Webgenios implemented on our website has dramatically improved our search rankings. We're now on the first page for all our key terms, and organic traffic has doubled.",
+        "The SEO optimization Webgenios implemented on our website has dramatically improved our search rankings. We&apos;re now on the first page for all our key terms, and organic traffic has doubled.",
       name: "Lisa Patel",
       title: "Owner, Wellness Hub",
       image:
