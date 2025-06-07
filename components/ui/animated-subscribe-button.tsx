@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Loader2 } from "lucide-react";
 
 interface AnimatedSubscribeButtonProps {
-  onClick: () => void;
+  onClick?: () => void;
+  children?: ReactNode;
   className?: string;
   defaultLabel?: string;
   loadingLabel?: string;
@@ -16,6 +17,7 @@ interface AnimatedSubscribeButtonProps {
 
 export function AnimatedSubscribeButton({
   onClick,
+  children,
   className = "",
   defaultLabel = "Subscribe",
   loadingLabel = "Subscribing...",
@@ -38,7 +40,7 @@ export function AnimatedSubscribeButton({
   }, [isSubmitting, isSubmitted]);
 
   const handleClick = () => {
-    if (status === "idle") {
+    if (status === "idle" && onClick) {
       onClick();
       setStatus("submitting");
 
@@ -73,7 +75,7 @@ export function AnimatedSubscribeButton({
             exit={{ opacity: 0 }}
             className="flex items-center justify-center"
           >
-            {defaultLabel}
+            {children || defaultLabel}
           </motion.span>
         )}
 

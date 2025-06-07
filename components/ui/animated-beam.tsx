@@ -18,6 +18,8 @@ export interface AnimatedBeamProps {
   gradientStartColor?: string;
   gradientStopColor?: string;
   delay?: number;
+  speed?: number;
+  backgroundColor?: string;
 }
 
 export const AnimatedBeam = ({
@@ -34,6 +36,8 @@ export const AnimatedBeam = ({
   gradientStartColor,
   gradientStopColor,
   delay = 0,
+  speed = 5,
+  backgroundColor,
 }: AnimatedBeamProps) => {
   const localContainerRef = useRef<HTMLDivElement>(null);
   const [cursorPosition, setCursorPosition] = useState<{
@@ -119,6 +123,7 @@ export const AnimatedBeam = ({
         className={cn("relative overflow-hidden", containerClassName)}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        style={backgroundColor ? { backgroundColor } : undefined}
       >
         <div
           className={cn(

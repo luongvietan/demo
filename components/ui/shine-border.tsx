@@ -7,13 +7,18 @@ interface ShineBorderProps {
   children: ReactNode;
   className?: string;
   borderRadius?: string;
-  borderWidth?: string;
+  borderWidth?: string | number;
   borderColor?: string;
   shineBrightness?: number;
   shineWidth?: number;
   shineVelocity?: number;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
+  duration?: number;
+  isActive?: boolean;
+  shineColor?: string | string[];
+  containerClassName?: string;
+  shimmerColor?: string;
 }
 
 export function ShineBorder({
@@ -27,6 +32,11 @@ export function ShineBorder({
   shineVelocity = 0.1,
   onMouseEnter,
   onMouseLeave,
+  duration,
+  isActive = false,
+  shineColor,
+  containerClassName,
+  shimmerColor,
 }: ShineBorderProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -52,13 +62,74 @@ export function ShineBorder({
     if (onMouseLeave) onMouseLeave();
   };
 
+  // Convert borderWidth to string if it's a number
+  const borderWidthStr =
+    typeof borderWidth === "number" ? `${borderWidth}px` : borderWidth;
+
+  // If containerClassName is provided, wrap everything in a div with that class
+  if (containerClassName) {
+    return (
+      <div className={containerClassName}>
+        <div
+          ref={containerRef}
+          className={`relative ${className}`}
+          style={{
+            borderRadius,
+            border: `${borderWidthStr} solid ${borderColor}`,
+            overflow: "hidden",
+          }}
+          onMouseMove={handleMouseMove}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {/* Shine effect */}
+          {(isHovered || isActive) && (
+            <motion.div
+              className="absolute pointer-events-none"
+              animate={{
+                x: [
+                  mousePosition.x - shineWidth,
+                  mousePosition.x + shineWidth * 2,
+                ],
+                y: [
+                  mousePosition.y - shineWidth,
+                  mousePosition.y + shineWidth * 2,
+                ],
+              }}
+              transition={{
+                duration: duration ? duration / 1000 : 1 / shineVelocity,
+                ease: "linear",
+                repeat: Infinity,
+              }}
+              style={{
+                width: `${shineWidth}px`,
+                height: `${shineWidth * 2}px`,
+                background: `radial-gradient(circle, ${
+                  shineColor ||
+                  shimmerColor ||
+                  `rgba(255, 255, 255, ${shineBrightness})`
+                } 0%, rgba(255, 255, 255, 0) 70%)`,
+                borderRadius: "50%",
+                filter: "blur(8px)",
+                opacity: 0.8,
+              }}
+            />
+          )}
+
+          {/* Content */}
+          <div className="relative z-10">{children}</div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       ref={containerRef}
       className={`relative ${className}`}
       style={{
         borderRadius,
-        border: `${borderWidth} solid ${borderColor}`,
+        border: `${borderWidthStr} solid ${borderColor}`,
         overflow: "hidden",
       }}
       onMouseMove={handleMouseMove}
@@ -66,7 +137,7 @@ export function ShineBorder({
       onMouseLeave={handleMouseLeave}
     >
       {/* Shine effect */}
-      {isHovered && (
+      {(isHovered || isActive) && (
         <motion.div
           className="absolute pointer-events-none"
           animate={{
@@ -74,14 +145,18 @@ export function ShineBorder({
             y: [mousePosition.y - shineWidth, mousePosition.y + shineWidth * 2],
           }}
           transition={{
-            duration: 1 / shineVelocity,
+            duration: duration ? duration / 1000 : 1 / shineVelocity,
             ease: "linear",
             repeat: Infinity,
           }}
           style={{
             width: `${shineWidth}px`,
             height: `${shineWidth * 2}px`,
-            background: `radial-gradient(circle, rgba(255, 255, 255, ${shineBrightness}) 0%, rgba(255, 255, 255, 0) 70%)`,
+            background: `radial-gradient(circle, ${
+              shineColor ||
+              shimmerColor ||
+              `rgba(255, 255, 255, ${shineBrightness})`
+            } 0%, rgba(255, 255, 255, 0) 70%)`,
             borderRadius: "50%",
             filter: "blur(8px)",
             opacity: 0.8,

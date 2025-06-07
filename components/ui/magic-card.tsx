@@ -7,12 +7,16 @@ interface MagicCardProps {
   children?: ReactNode;
   className?: string;
   spotlightSize?: number;
+  spotlight?: boolean;
+  spotlightColor?: string;
 }
 
 export const MagicCard = ({
   children,
   className,
   spotlightSize = 150,
+  spotlight = false,
+  spotlightColor = "rgba(120, 219, 178, 0.15)",
 }: MagicCardProps) => {
   const divRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -49,8 +53,8 @@ export const MagicCard = ({
       <div
         className="pointer-events-none absolute -inset-px opacity-0 transition duration-300"
         style={{
-          opacity,
-          background: `radial-gradient(${spotlightSize}px circle at ${position.x}px ${position.y}px, rgba(120, 219, 178, 0.15), transparent 80%)`,
+          opacity: spotlight ? 1 : opacity,
+          background: `radial-gradient(${spotlightSize}px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 80%)`,
         }}
       />
       <div className="relative z-10 w-full">{children}</div>
